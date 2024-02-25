@@ -36,7 +36,7 @@ const createQuestion = (question) => {
   });
 };
 
-const saveContact = (nama, email) => {
+const saveContact = (nama, email, nohp) => {
   let contacts = [];
   // Mengambil data contacts yang sudah ada pada file
   const fileBuffer = fs.readFileSync(dataPath, "utf-8"); //  readFileSync membaca isi file data/contact.json secara synchronous . jika file tidak ada maka otomatis akan dibuatkan
@@ -49,7 +49,7 @@ const saveContact = (nama, email) => {
     contacts = JSON.parse(fileBuffer); //  ubah string json ke object, karena isi dari file contacts.josn adalah string json
   }
   // Menambahkan data contacs baru
-  const contact = { nama: nama, email }; // contact =  {nama: nama}
+  const contact = { nama: nama, email, nohp }; // contact =  {nama: nama}
   contacts.push(contact); // push dengan method array
   fs.writeFileSync(dataPath, JSON.stringify(contacts)); // masukkan data contact baru dengan writeFileSync dan mengubah string object ke string json
 
